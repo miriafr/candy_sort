@@ -5,7 +5,7 @@ const colorThemes = {
     classic: [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xffa500, 0x800080],
     pastel:  [0xffc1cc, 0xfff0a5, 0xbaffc9, 0xc5c8ff, 0xfed6ff, 0xcafffd],
     neon:    [0xff00ff, 0x00ffff, 0xffff00, 0xff6600, 0x00ff00, 0x6600ff],
-    default: [0xFF733C,0xff4374, 0xff95b6, 0xfeb500, 0x4D8B31, 0x7371FC]
+    default: [0xFF733C,0xff4374, 0xff95b6, 0xfeb500, 0x41521F, 0xBCE7FD]
   };
 
 let game;
@@ -14,12 +14,12 @@ const config = {
   type: Phaser.AUTO,
   width: 700,
   height: 700,
-  backgroundColor: '#eeeeee',
   scene: {
     preload,
     create
   },
-  parent: 'game-container'
+  parent: 'game-container',
+  transparent: true
 };
 
 function preload() {
@@ -46,8 +46,8 @@ function create() {
   // 🍬 Scatter candies randomly
   for (let i = 0; i < candyCount; i++) {
     const color = Phaser.Utils.Array.GetRandom(candyColors);
-    const x = Phaser.Math.Between(150, config.width - 100);
-    const y = Phaser.Math.Between(150, config.height - 100);
+    const x = Phaser.Math.Between(200, config.width - 200);
+    const y = Phaser.Math.Between(200, config.height - 200);
     const rotation = Phaser.Math.FloatBetween(0, Math.PI * 2);
     const scale = Phaser.Math.FloatBetween(0.9, 1.1);
   
@@ -61,7 +61,7 @@ function create() {
     const highlightKey = Phaser.Utils.Array.GetRandom(highlightOptions);
 
     const highlight = scene.add.image(0, 0, highlightKey)
-      .setAlpha(0.5)
+      .setAlpha(0.7)
       .setScale(1);
   
     // 📦 Group them into a container
